@@ -130,18 +130,34 @@
 </main>
 
 <script>
+// const wishes = [
+//   "Chúc bạn luôn rạng rỡ như ánh nắng ban mai, mỗi ngày đều bình an, vui vẻ và ngập tràn yêu thương.",
+//   "Chúc bạn luôn mạnh mẽ để theo đuổi ước mơ, dịu dàng để yêu thương và hạnh phúc với những điều giản dị nhất.",
+//   "Chúc bạn sức khỏe dồi dào, tâm hồn an yên và nhận lại thật nhiều yêu thương từ những người xung quanh.",
+//   "Chúc bạn luôn tự tin tỏa sáng, được trân trọng vì những gì bạn là và hạnh phúc theo cách mình mong muốn.",
+//   "Mong mọi ước mơ của bạn đều có ngày thành hiện thực, mọi nỗ lực đều được đền đáp và mọi hành trình đều gặp điều tốt đẹp.",
+//   "Chúc bạn có thật nhiều niềm vui, thật ít muộn phiền, luôn mỉm cười và giữ được sự ấm áp trong trái tim.",
+//   "Chúc bạn luôn nhớ rằng mình là một người tuyệt vời, xứng đáng với những điều tốt đẹp và những tình yêu chân thành nhất.",
+//   "Chúc bạn luôn xinh đẹp từ tâm hồn đến nụ cười, rạng rỡ trong ánh mắt và hạnh phúc trong từng khoảnh khắc của cuộc sống.",
+//   "Mong bạn luôn có người để sẻ chia, có nơi để trở về, có niềm tin để bước tiếp và có đủ bình yên để mỉm cười.",
+//   "Chúc bạn luôn dịu dàng mà kiên cường, tự tin mà khiêm nhường, sống hết mình với đam mê và tỏa sáng theo cách riêng."
+// ];
+
 const wishes = [
-  "Chúc bạn luôn rạng rỡ như ánh nắng ban mai, mỗi ngày đều bình an, vui vẻ và ngập tràn yêu thương.",
-  "Chúc bạn luôn mạnh mẽ để theo đuổi ước mơ, dịu dàng để yêu thương và hạnh phúc với những điều giản dị nhất.",
-  "Chúc bạn sức khỏe dồi dào, tâm hồn an yên và nhận lại thật nhiều yêu thương từ những người xung quanh.",
-  "Chúc bạn luôn tự tin tỏa sáng, được trân trọng vì những gì bạn là và hạnh phúc theo cách mình mong muốn.",
-  "Mong mọi ước mơ của bạn đều có ngày thành hiện thực, mọi nỗ lực đều được đền đáp và mọi hành trình đều gặp điều tốt đẹp.",
-  "Chúc bạn có thật nhiều niềm vui, thật ít muộn phiền, luôn mỉm cười và giữ được sự ấm áp trong trái tim.",
-  "Chúc bạn luôn nhớ rằng mình là một người tuyệt vời, xứng đáng với những điều tốt đẹp và những tình yêu chân thành nhất.",
-  "Chúc bạn luôn xinh đẹp từ tâm hồn đến nụ cười, rạng rỡ trong ánh mắt và hạnh phúc trong từng khoảnh khắc của cuộc sống.",
-  "Mong bạn luôn có người để sẻ chia, có nơi để trở về, có niềm tin để bước tiếp và có đủ bình yên để mỉm cười.",
-  "Chúc bạn luôn dịu dàng mà kiên cường, tự tin mà khiêm nhường, sống hết mình với đam mê và tỏa sáng theo cách riêng."
+  "Chúc bạn luôn an vui dưới ánh sáng từ bi của Đức Phật, thân tâm thường lạc và tinh tấn trên con đường tu học.",
+  "Chúc bạn luôn giữ vững niềm tin Tam Bảo, nuôi dưỡng lòng từ bi và lan tỏa những điều thiện lành đến mọi người.",
+  "Chúc bạn luôn tinh tấn tu học, trưởng dưỡng đạo tâm, sống đẹp đời tốt đạo và vững bước trên con đường lý tưởng Gia Đình Phật Tử.",
+  "Chúc bạn luôn có một trái tim từ bi, một tâm hồn an nhiên và một nụ cười hoan hỷ trong mọi hoàn cảnh.",
+  "Mong bạn luôn gặp nhiều thiện duyên, được ánh sáng Phật pháp soi đường và đủ nghị lực để vượt qua mọi khó khăn trong cuộc sống.",
+  "Chúc bạn luôn giữ mãi tinh thần Bi – Trí – Dũng, sống chân thành, biết yêu thương và sẵn lòng phụng sự tha nhân.",
+  "Chúc bạn luôn là một đóa hoa tươi thắm trong vườn hoa Lam, góp phần xây dựng tình Lam ngày càng gắn bó và lan tỏa những giá trị tốt đẹp.",
+  "Chúc bạn thân tâm an lạc, gia đình hòa thuận, cuộc sống bình an và luôn tìm thấy niềm vui trong từng việc thiện mình làm.",
+  "Mong bạn luôn giữ trọn màu áo Lam trong tim, bền lòng với lý tưởng, nhiệt thành trong phụng sự và trưởng thành trong ánh sáng Phật pháp.",
+  "Chúc bạn luôn an vui, hạnh phúc và tinh tấn; nguyện đem lòng từ bi làm hành trang, lấy trí tuệ làm ngọn đèn và tình Lam làm sức mạnh trên mọi nẻo đường."
 ];
+
+
+
 const TOTAL = wishes.length;
 const flowerEmojis = ["🌸","🌹","🌷","🌺","🌻","🌼","💐","🪷","🏵️","🌿"];
 const wishIcons = ["🌹","🌷","🌸","🌺","🌻","💐","🎀","🌼","✨","🦋"];
