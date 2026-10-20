@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chúc mừng 20/10</title>
+<style>
+  :root{ --rose:#e84a7f; --rose-d:#b8265a; --pink:#ffd1e0; --ink:#4a1b30; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:"Segoe UI",system-ui,sans-serif;color:var(--ink);
+    background:linear-gradient(180deg,#ffe3ec 0%,#fff6f0 55%,#ffe9d6 100%);
+    background-attachment:fixed;
+    min-height:100vh;min-height:100dvh;overflow-x:hidden;
+  }
+
+  /* Vườn hoa nền */
+  #bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .branch{position:absolute;bottom:-6px;transform-origin:50% 100%;animation:grow 1.4s cubic-bezier(.2,.8,.2,1) both}
+  .branch svg{display:block;width:100%;height:100%;overflow:visible;transform-origin:50% 100%;animation:sway var(--d,3.5s) ease-in-out infinite alternate;animation-delay:var(--dl,0s)}
+  @keyframes grow{from{transform:scaleY(0);opacity:0}to{transform:scaleY(1);opacity:1}}
+  @keyframes sway{from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
+
+  #petals{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+  .petal{position:absolute;top:-30px;font-size:20px;animation:fall linear forwards;opacity:.9}
+  @keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+
+  main{
+    position:relative;z-index:2;max-width:900px;margin:0 auto;text-align:center;
+    padding:clamp(20px,5vh,48px) max(18px,env(safe-area-inset-right))
+            max(36px,env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left));
+  }
+  .badge{display:inline-block;background:var(--rose);color:#fff;padding:6px 18px;border-radius:30px;font-size:clamp(12px,3.2vw,14px);letter-spacing:2px;margin-bottom:clamp(8px,2vh,14px)}
+  h1{font-family:Georgia,serif;font-size:clamp(44px,min(12vw,14vh),104px);color:var(--rose-d);line-height:1;text-shadow:3px 3px 0 var(--pink)}
+  h1 span{display:inline-block;animation:bob 2.4s ease-in-out infinite}
+  h1 span:nth-child(2){animation-delay:.2s} h1 span:nth-child(3){animation-delay:.4s}
+  h1 span:nth-child(4){animation-delay:.6s} h1 span:nth-child(5){animation-delay:.8s}
+  @keyframes bob{50%{transform:translateY(-10px)}}
+  .sub{margin:clamp(8px,2vh,14px) auto 0;max-width:34em;font-size:clamp(15px,4vw,20px);line-height:1.5;opacity:.85}
+
+  .flowerWrap{display:flex;justify-content:center;margin-top:clamp(10px,3vh,28px)}
+  .flowerBtn{
+    background:none;border:0;cursor:pointer;
+    font-size:clamp(64px,min(22vw,17vh),124px);line-height:1;padding:8px;
+    min-width:64px;min-height:64px;
+    filter:drop-shadow(0 6px 8px rgba(232,74,127,.35));transition:transform .15s;
+    animation:beat 1.8s ease-in-out infinite;touch-action:manipulation;-webkit-tap-highlight-color:transparent
+  }
+  .flowerBtn:active{transform:scale(.8)}
+  @keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+  @media (hover:hover){.flowerBtn:hover{transform:scale(1.15)}}
+  .flowerBtn[hidden],.reset[hidden]{display:none}
+
+  .reset{background:var(--rose-d);color:#fff;border:0;padding:14px 28px;min-height:48px;border-radius:30px;font-size:17px;cursor:pointer;
+    box-shadow:0 6px 0 #7e1840;transition:.1s;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+  .reset:active{transform:translateY(4px);box-shadow:0 2px 0 #7e1840}
+
+  #wishBox{
+    margin:clamp(12px,3vh,26px) auto 0;width:100%;max-width:600px;min-height:clamp(120px,18vh,160px);
+    background:rgba(255,255,255,.95);border:3px solid var(--rose);border-radius:24px;
+    padding:clamp(16px,3vw,28px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+    box-shadow:0 12px 30px rgba(184,38,90,.2)
+  }
+  #wishIcon{font-size:clamp(28px,8vw,38px)}
+  #wishText{font-family:Georgia,serif;font-style:italic;font-size:clamp(16px,4.4vw,22px);line-height:1.55}
+  #finale{display:none;margin-top:6px;font-weight:700;color:var(--rose-d);font-size:clamp(17px,4.6vw,22px);line-height:1.5}
+  #finale.show{display:block;animation:pop .6s}
+  #wishBox.pop{animation:pop .45s}
+  @keyframes pop{0%{transform:scale(.9);opacity:.4}60%{transform:scale(1.04)}100%{transform:scale(1);opacity:1}}
+
+  /* Trạng thái hoàn thành: thu gọn nội dung để lộ trọn vườn hoa */
+  body.done .sub,body.done footer,body.done #wishIcon,body.done #wishText{display:none}
+  body.done main{padding-top:clamp(14px,3vh,24px);padding-bottom:20px}
+  body.done .flowerWrap{margin-top:12px}
+  body.done #wishBox{background:none;border:0;box-shadow:none;min-height:0;padding:4px 0;margin-top:10px;max-width:680px}
+  body.done #finale{font-size:clamp(20px,5.4vw,32px);text-shadow:0 0 6px #fff,0 0 14px #fff,0 0 24px #fff}
+  body.done .reset{padding:10px 22px;min-height:44px;font-size:15px}
+
+  .float{position:fixed;pointer-events:none;z-index:9;font-size:clamp(20px,6vw,28px);animation:up 1.2s ease-out forwards}
+  @keyframes up{to{transform:translateY(-140px) scale(1.4);opacity:0}}
+  footer{margin-top:clamp(24px,5vh,46px);opacity:.75;font-size:clamp(12px,3.4vw,14px);line-height:1.5}
+
+  /* Điện thoại */
+  @media (max-width:480px){
+    .badge{letter-spacing:1px;padding:6px 14px}
+    #wishBox{border-width:2px;border-radius:20px}
+  }
+  /* Laptop / màn hình lớn */
+  @media (min-width:900px){
+    main{max-width:1000px}
+    #wishBox{max-width:680px}
+  }
+  /* Màn hình thấp (laptop nhỏ, điện thoại xoay ngang) */
+  @media (max-height:600px){
+    .sub{display:none}
+    .badge{margin-bottom:6px}
+  }
+  @media (max-height:480px) and (orientation:landscape){
+    main{padding-top:10px;padding-bottom:20px}
+    .flowerBtn{font-size:60px}
+    #wishBox{min-height:90px;padding:10px 16px;margin-top:8px}
+    #wishIcon{display:none}
+    footer{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){ h1 span,.petal,.flowerBtn,.branch svg{animation:none} #petals{display:none} }
+</style>
+</head>
+<body>
+<div id="bg"></div>
+<div id="petals"></div>
+
+<main>
+  <div class="badge">NGÀY PHỤ NỮ VIỆT NAM</div>
+  <h1><span>2</span><span>0</span><span>/</span><span>1</span><span>0</span></h1>
+  <p class="sub">Gửi lời chúc yêu thương đến mẹ, chị, em, bạn bè và những người phụ nữ tuyệt vời trong cuộc sống 💐</p>
+
+  <div class="flowerWrap">
+    <button class="flowerBtn" id="flowerBtn" type="button" aria-label="Nhận lời chúc">🌸</button>
+    <button class="reset" id="reset" type="button" hidden>🌱 Trồng lại vườn hoa</button>
+  </div>
+
+  <div id="wishBox">
+    <div id="wishIcon">💌</div>
+    <div id="wishText">Đừng chạm vào bông hoa nhé!!</div>
+    <div id="finale">🌷 Mong bạn luôn xinh tươi như vườn hoa này! 🌷</div>
+  </div>
+
+  <footer>Chúc tất cả phụ nữ luôn xinh đẹp, hạnh phúc và được yêu thương mỗi ngày 🌷</footer>
+</main>
+
+<script>
+const wishes = [
+  "Chúc bạn luôn rạng rỡ như đóa hoa mùa xuân, mỗi ngày đều tràn ngập tiếng cười.",
+  "Cảm ơn vì đã luôn mạnh mẽ và dịu dàng. Chúc bạn một ngày 20/10 thật ngọt ngào!",
+  "Chúc bạn sức khỏe, bình an và được yêu thương nhiều hơn những gì bạn cho đi.",
+  "Phụ nữ không chỉ một ngày, mà mỗi ngày đều xứng đáng được tôn vinh. Chúc mừng 20/10!",
+  "Mong mọi ước mơ của bạn đều nở hoa, và mọi con đường đều có ánh nắng.",
+  "Chúc bạn có thật nhiều niềm vui, ít muộn phiền, và một trái tim luôn ấm áp.",
+  "Bạn là điều tuyệt vời trong cuộc sống của rất nhiều người. Hãy luôn tự hào về mình nhé!",
+  "Chúc bạn luôn xinh đẹp từ tâm hồn đến nụ cười, và hạnh phúc theo cách của riêng mình.",
+  "Mong bạn luôn được che chở, được lắng nghe và được yêu thương thật trọn vẹn.",
+  "Dịu dàng nhưng kiên cường, đó chính là sức mạnh của phụ nữ. Chúc bạn 20/10 thật rực rỡ!"
+];
+const TOTAL = wishes.length;
+const flowerEmojis = ["🌸","🌹","🌷","🌺","🌻","🌼","💐","🪷","🏵️","🌿"];
+const wishIcons = ["🌹","🌷","🌸","🌺","🌻","💐","🎀","🌼","✨","🦋"];
+const colors = [
+  ["#ff6fa5","#ffd54a"],["#ff4d6d","#ffe08a"],["#ffa3c4","#ff8a3d"],["#c77dff","#ffe27a"],
+  ["#ff8fab","#fff1a8"],["#ffb703","#7b3f00"],["#f72585","#ffd6a5"],["#ff9e80","#fff3b0"],
+  ["#e0aaff","#ffe66d"],["#ff5c8a","#ffe3a3"]
+];
+
+/* ---- Cánh hoa rơi ---- */
+const petals = document.getElementById('petals');
+function dropPetal(){
+  const p = document.createElement('div');
+  p.className='petal';
+  p.textContent = ["🌸","🌺","💮","🌷"][Math.floor(Math.random()*4)];
+  p.style.left = Math.random()*100+'vw';
+  p.style.fontSize = (14+Math.random()*18)+'px';
+  p.style.animationDuration = (6+Math.random()*6)+'s';
+  petals.appendChild(p);
+  setTimeout(()=>p.remove(),12500);
+}
+const petalEvery = () => window.innerWidth < 600 ? 900 : window.innerWidth < 900 ? 650 : 450;
+(function loop(){ dropPetal(); setTimeout(loop, petalEvery()); })();
+
+function floatEmoji(x,y,e){
+  const f = document.createElement('div');
+  f.className='float'; f.textContent=e;
+  f.style.left=(x+(Math.random()*60-30))+'px'; f.style.top=y+'px';
+  document.body.appendChild(f); setTimeout(()=>f.remove(),1200);
+}
+
+/* ---- Cành hoa (SVG) ---- */
+function branchSVG([petal,center]){
+  let ps = '';
+  for(let a=0;a<360;a+=60){
+    ps += `<ellipse cx="50" cy="32" rx="9" ry="17" fill="${petal}" transform="rotate(${a} 50 50)"/>`;
+  }
+  return `<svg viewBox="0 0 100 300" preserveAspectRatio="xMidYMax meet">
+    <path d="M50 300 C 30 220, 70 140, 50 50" fill="none" stroke="#4f9d5a" stroke-width="4" stroke-linecap="round"/>
+    <ellipse cx="33" cy="238" rx="15" ry="6" fill="#6cbb6f" transform="rotate(-35 33 238)"/>
+    <ellipse cx="39" cy="176" rx="14" ry="5.5" fill="#5aae63" transform="rotate(-30 39 176)"/>
+    <ellipse cx="67" cy="114" rx="14" ry="5.5" fill="#6cbb6f" transform="rotate(35 67 114)"/>
+    ${ps}
+    <circle cx="50" cy="50" r="9" fill="${center}"/>
+  </svg>`;
+}
+
+const bg = document.getElementById('bg');
+let slots = [];
+function newSlots(){ slots = [...Array(TOTAL).keys()].sort(()=>Math.random()-.5); }
+
+// Kích thước cành theo màn hình: giữ đúng tỉ lệ 1:3 và không quá rộng so với bề ngang
+function sizeBranch(el){
+  const vw = window.innerWidth, vh = window.innerHeight;
+  const wMax = Math.max(56, vw / (vw < 600 ? 4 : vw < 900 ? 5.5 : 7));
+  const hWanted = vh * parseFloat(el.dataset.r);
+  const w = Math.round(Math.min(hWanted / 3, wMax));
+  const h = w * 3;
+  el.style.width = w + 'px';
+  el.style.height = h + 'px';
+  el.style.marginLeft = (-w/2) + 'px';
+}
+
+function addBranch(n){
+  const slot = slots[n];
+  const x = (slot + 0.5) * (100/TOTAL) + (Math.random()*4-2);
+  const el = document.createElement('div');
+  el.className = 'branch';
+  el.dataset.r = (0.30 + Math.random()*0.30).toFixed(3);
+  el.style.left = x + '%';
+  el.innerHTML = branchSVG(colors[n % colors.length]);
+  const svg = el.firstElementChild;
+  svg.style.setProperty('--d', (2.6 + Math.random()*2.2).toFixed(2)+'s');
+  svg.style.setProperty('--dl', (-Math.random()*3).toFixed(2)+'s');
+  sizeBranch(el);
+  bg.appendChild(el);
+}
+
+// Xoay ngang / đổi kích thước cửa sổ: tính lại cỡ các cành
+let rt;
+window.addEventListener('resize', ()=>{
+  clearTimeout(rt);
+  rt = setTimeout(()=>bg.querySelectorAll('.branch').forEach(sizeBranch), 120);
+});
+
+/* ---- Lời chúc ---- */
+const btn = document.getElementById('flowerBtn');
+const resetBtn = document.getElementById('reset');
+const box = document.getElementById('wishBox');
+const wishText = document.getElementById('wishText');
+const wishIcon = document.getElementById('wishIcon');
+const finale = document.getElementById('finale');
+let deck = [], count = 0, doneTimer = null;
+
+function startRound(){
+  clearTimeout(doneTimer);
+  document.body.classList.remove('done');
+  deck = wishes.map((_,i)=>i).sort(()=>Math.random()-.5);
+  newSlots(); count = 0;
+  bg.innerHTML = '';
+  btn.hidden = false; resetBtn.hidden = true;
+  btn.textContent = flowerEmojis[0];
+  wishIcon.textContent = '💌';
+  wishText.textContent = 'Đừng chạm vào bông hoa nhé!!';
+  finale.classList.remove('show');
+}
+
+btn.onclick = ()=>{
+  if(count >= TOTAL) return;
+  const idx = deck[count];
+  addBranch(count);
+  count++;
+
+  wishText.textContent = wishes[idx];
+  wishIcon.textContent = wishIcons[idx % wishIcons.length];
+  box.classList.remove('pop'); void box.offsetWidth; box.classList.add('pop');
+
+  // Đổi biểu tượng nút sang bông hoa khác
+  btn.textContent = flowerEmojis[count % flowerEmojis.length];
+
+  const r = btn.getBoundingClientRect();
+  for(let k=0;k<5;k++) floatEmoji(r.left+r.width/2, r.top+r.height/3, flowerEmojis[(count+k)%flowerEmojis.length]);
+
+  if(count === TOTAL){
+    btn.hidden = true;
+    // Cho đọc lời chúc thứ 10, rồi thu gọn khung để lộ trọn vườn hoa
+    doneTimer = setTimeout(()=>{
+      document.body.classList.add('done');
+      finale.classList.add('show');
+      resetBtn.hidden = false;
+      for(let i=0;i<30;i++) setTimeout(dropPetal, i*70);
+    }, 2800);
+  }
+  if(window.innerWidth < 900) box.scrollIntoView({behavior:'smooth',block:'nearest'});
+};
+resetBtn.onclick = startRound;
+startRound();
+</script>
+</body>
+</html>
